@@ -21,4 +21,24 @@
         </plugins>
     </build>
 
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>An easy API to make the usage of JFrame easy</description>
+    <url>https://www.gamingcraft.de/</url>
+    
+    <licenses>
+        <license>
+            <name>Utility Client License</name>
+            <url>https://uc.gamingcraft.de/License/</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>GamingCraft_hd</name>
+            <email>kvvmischl@gmail.com</email>
+            <organization>UtilityClient</organization>
+            <organizationUrl>https://uc.gamingcraft.de/</organizationUrl>
+        </developer>
+    </developers>
+
 </project>
