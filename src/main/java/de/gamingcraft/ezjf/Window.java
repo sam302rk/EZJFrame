@@ -10,15 +10,12 @@ public class Window {
     public Window(String title, int width, int height, int x, int y, Image icon, boolean resizable, ITheme theme) {
         frame = new JFrame(title);
 
-        frame.setSize(width, height);
+        frame = generate(frame, width, height);
+
         frame.setLocation(x, y);
 
         frame.setIconImage(icon);
         frame.setResizable(resizable);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.setLayout(null);
 
         frame.pack();
 
@@ -31,14 +28,9 @@ public class Window {
     public Window(String title, int width, int height, int x, int y, Image icon, ITheme theme) {
         frame = new JFrame(title);
 
-        frame.setSize(width, height);
+        frame = generate(frame, width, height);
         frame.setLocation(x, y);
-
         frame.setIconImage(icon);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.setLayout(null);
 
         this.theme = theme;
         frame.setBackground(this.theme.background());
@@ -50,12 +42,10 @@ public class Window {
     public Window(String title, int width, int height, int x, int y, ITheme theme) {
         frame = new JFrame(title);
 
-        frame.setSize(width, height);
+        frame = generate(frame, width, height);
+
         frame.setLocation(x, y);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.setLayout(null);
 
         this.theme = theme;
         frame.setBackground(this.theme.background());
@@ -67,11 +57,7 @@ public class Window {
     public Window(String title, int width, int height, ITheme theme) {
         frame = new JFrame(title);
 
-        frame.setSize(width, height);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.setLayout(null);
+        frame = generate(frame, width, height);
 
         this.theme = theme;
         frame.setBackground(this.theme.background());
@@ -80,9 +66,25 @@ public class Window {
         frame.setVisible(true);
     }
 
+    private JFrame generate(JFrame frame, int width, int height) {
+        frame.setPreferredSize(new Dimension(width, height));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.getContentPane().setLayout(null);
+        return frame;
+    }
+
     public void add(JComponent component) {
         component.setBackground(theme.background());
         component.setForeground(theme.foreground());
+        component.setBounds(0, 0, 200, 35);
+        frame.add(component);
+    }
+
+    public void add(JComponent component, int x, int y, int width, int height) {
+        component.setBackground(theme.background());
+        component.setForeground(theme.foreground());
+        component.setBounds(x, y, width, height);
         frame.add(component);
     }
 
@@ -90,6 +92,15 @@ public class Window {
         mb.setBackground(theme.menubar_background());
         mb.setForeground(theme.menubar_foreground());
         frame.setJMenuBar(mb);
+        frame.pack();
+    }
+
+    public void showMessageBox(String title, String message, int messageType, Icon icon) {
+        JOptionPane.showMessageDialog(frame, message, title, messageType, icon);
+    }
+
+    public void showMessageBox(String title, String message, int messageType) {
+        JOptionPane.showMessageDialog(frame, message, title, messageType);
     }
 
 }

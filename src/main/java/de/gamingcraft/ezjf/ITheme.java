@@ -5,9 +5,13 @@ import java.awt.*;
 public interface ITheme {
     String name();
 
+    /* ------------------------------------------------------- */
+
     Color background();
     Color foreground();
 
-    Color menubar_background();
-    Color menubar_foreground();
+    /* ------------------------------------------------------- */
+
+    default Color menubar_background() {return Color.WHITE;}
+    default Color menubar_foreground() {return Color.BLACK;}
 }
