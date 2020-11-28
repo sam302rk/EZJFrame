@@ -79,7 +79,7 @@ public class Window {
     }
 
     public void add(JComponent component) {
-        component.setBackground(theme.background());
+        component.setBackground(theme.component_background());
         component.setForeground(theme.text());
         component.setBounds(0, 0, 200, 35);
         frame.add(component);
