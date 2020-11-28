@@ -5,7 +5,12 @@ import java.awt.*;
 public class ExampleTheme implements ITheme {
     @Override
     public String name() {
-        return "Example";
+        return "Theme";
+    }
+
+    @Override
+    public Color text() {
+        return Color.BLACK;
     }
 
     @Override
@@ -14,17 +19,12 @@ public class ExampleTheme implements ITheme {
     }
 
     @Override
-    public Color foreground() {
-        return Color.BLACK;
-    }
-
-    @Override
     public Color menubar_background() {
-        return Color.WHITE;
+        return Color.LIGHT_GRAY;
     }
 
     @Override
-    public Color menubar_foreground() {
-        return Color.BLACK;
+    public Color component_background() {
+        return Color.LIGHT_GRAY;
     }
 }

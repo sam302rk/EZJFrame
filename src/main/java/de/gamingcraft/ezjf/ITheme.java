@@ -4,14 +4,8 @@ import java.awt.*;
 
 public interface ITheme {
     String name();
-
-    /* ------------------------------------------------------- */
-
+    Color text();
     Color background();
-    Color foreground();
-
-    /* ------------------------------------------------------- */
-
-    default Color menubar_background() {return Color.WHITE;}
-    default Color menubar_foreground() {return Color.BLACK;}
+    Color component_background();
+    Color menubar_background();
 }

@@ -10,7 +10,7 @@ public class Window {
     public Window(String title, int width, int height, int x, int y, Image icon, boolean resizable, ITheme theme) {
         frame = new JFrame(title);
 
-        frame = generate(frame, width, height);
+        frame = generate(frame, width, height, theme);
 
         frame.setLocation(x, y);
 
@@ -28,7 +28,7 @@ public class Window {
     public Window(String title, int width, int height, int x, int y, Image icon, ITheme theme) {
         frame = new JFrame(title);
 
-        frame = generate(frame, width, height);
+        frame = generate(frame, width, height, theme);
         frame.setLocation(x, y);
         frame.setIconImage(icon);
 
@@ -42,7 +42,7 @@ public class Window {
     public Window(String title, int width, int height, int x, int y, ITheme theme) {
         frame = new JFrame(title);
 
-        frame = generate(frame, width, height);
+        frame = generate(frame, width, height, theme);
 
         frame.setLocation(x, y);
 
@@ -57,7 +57,7 @@ public class Window {
     public Window(String title, int width, int height, ITheme theme) {
         frame = new JFrame(title);
 
-        frame = generate(frame, width, height);
+        frame = generate(frame, width, height, theme);
 
         this.theme = theme;
         frame.setBackground(this.theme.background());
@@ -66,31 +66,35 @@ public class Window {
         frame.setVisible(true);
     }
 
-    private JFrame generate(JFrame frame, int width, int height) {
+    private JFrame generate(JFrame frame, int width, int height, ITheme theme) {
         frame.setPreferredSize(new Dimension(width, height));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.getContentPane().setLayout(null);
+
+        frame.getContentPane().setBackground(theme.background());
+        frame.getContentPane().setForeground(theme.text());
+
         return frame;
     }
 
     public void add(JComponent component) {
         component.setBackground(theme.background());
-        component.setForeground(theme.foreground());
+        component.setForeground(theme.text());
         component.setBounds(0, 0, 200, 35);
         frame.add(component);
     }
 
     public void add(JComponent component, int x, int y, int width, int height) {
-        component.setBackground(theme.background());
-        component.setForeground(theme.foreground());
+        component.setBackground(theme.component_background());
+        component.setForeground(theme.text());
         component.setBounds(x, y, width, height);
         frame.add(component);
     }
 
     public void setMenu(JMenuBar mb) {
         mb.setBackground(theme.menubar_background());
-        mb.setForeground(theme.menubar_foreground());
+        mb.setForeground(theme.text());
         frame.setJMenuBar(mb);
         frame.pack();
     }
