@@ -95,6 +95,9 @@ public class Window {
     public void setMenu(JMenuBar mb) {
         mb.setBackground(theme.menubar_background());
         mb.setForeground(theme.text());
+        for (int i = 0; i < mb.getMenuCount(); i++) {
+            mb.getMenu(i).setForeground(theme.text());
+        }
         frame.setJMenuBar(mb);
         frame.pack();
     }
